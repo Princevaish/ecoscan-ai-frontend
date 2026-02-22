@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoScan — Garbage Classifier</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ══════════════════════════ FLOATING PARTICLES ════════════════════════ -->
+  <canvas class="particle-canvas" id="particleCanvas"></canvas>
+
+  <!-- ══════════════════════════ CURSOR GLOW ═══════════════════════════════ -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ══════════════════════════ ANIMATED GRADIENT MESH ════════════════════ -->
+  <div class="gradient-mesh" aria-hidden="true">
+    <div class="mesh-blob mesh-blob-1"></div>
+    <div class="mesh-blob mesh-blob-2"></div>
+    <div class="mesh-blob mesh-blob-3"></div>
+  </div>
+
+  <!-- ══════════════════════════ HEADER ══════════════════════════════════ -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">🌿</span>
+      <span class="logo-text">EcoScan</span>
+    </div>
+    <p class="tagline">AI-powered environment classifier</p>
+  </header>
+
+  <!-- ══════════════════════════ HERO ════════════════════════════════════ -->
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero-title">
+        Is your environment<br />
+        <span class="shimmer-text">clean or polluted?</span>
+      </h1>
+      <p class="hero-sub">Upload one or more photos — our CNN model analyses each one in seconds.</p>
+    </section>
+
+    <!-- ═══════════════════════ UPLOAD CARD ═════════════════════════════ -->
+    <section class="upload-card glass" id="uploadCard">
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon">📂</div>
+        <p class="drop-label">Drag & drop images here</p>
+        <p class="drop-sub">or</p>
+        <label class="btn btn-secondary" for="fileInput">Browse files</label>
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/jpeg,image/png,image/webp"
+          multiple
+          hidden
+        />
+        <p class="drop-hint">JPG · PNG · WEBP · Multiple files allowed</p>
+      </div>
+
+      <!-- Preview strip -->
+      <div class="preview-strip" id="previewStrip" hidden></div>
+
+      <!-- Actions -->
+      <div class="card-actions" id="cardActions" hidden>
+        <button class="btn btn-ghost" id="clearBtn">✕ Clear</button>
+        <button class="btn btn-primary magnetic-btn" id="predictBtn">
+          <span class="btn-text">Analyse images</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ LOADER ══════════════════════════════════ -->
+    <div class="loader-wrap" id="loaderWrap" hidden>
+      <div class="loader-ring"></div>
+      <p class="loader-text">Classifying<span class="dots"></span></p>
+    </div>
+
+    <!-- ═══════════════════════ RESULTS ═════════════════════════════════ -->
+    <section class="results-section" id="resultsSection" hidden>
+      <h2 class="results-heading">Results</h2>
+      <div class="results-grid" id="resultsGrid"></div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════════════ -->
+  <footer class="site-footer">
+    <p>EcoScan · CNN model · FastAPI backend · Made with ♻️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
